@@ -37,26 +37,15 @@ const buildOrderListItem = (order) => {
         }
     )
     
-    let totalCost = (foundMetal.price + foundSize.price + foundStyle.price)
-    //debugger
-    let myTotalCost = ((foundType.id === 1) ? (totalCost * 2) 
-    : (totalCost * 4))
-    
-    /*
-    const totalCost = () => {
-        let myTotalCost = 0
 
-        if (foundType.id = 2) {
-            
-            return myTotalCost + ((foundMetal.price + foundSize.price + foundStyle.price) * 2)
-        } else if (foundType.id = 3) {
-            return myTotalCost + ((foundMetal.price + foundSize.price + foundStyle.price) * 4)
-        } else return myTotalCost + (foundMetal.price + foundSize.price + foundStyle.price)
-    }*/
+
+    let totalCost = (foundMetal.price + foundSize.price + foundStyle.price)
+    
+    let myTotalCost = foundType.id >= 3 ? (totalCost * 4) : (foundType.id < 2 ? (totalCost * 1) : totalCost *  2)
 
 
     return `<li>
-        Order #${order.id} costs $${myTotalCost}
+        Order #${order.id} costs $${myTotalCost.toFixed(2)}
     </li>`
 
 }
